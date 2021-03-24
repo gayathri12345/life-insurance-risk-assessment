@@ -1,4 +1,0 @@
-# need to check forget Password method  
-work on charts
-alignment needed for dashboard
-arrange the app.py file to various files
