@@ -1,0 +1,51 @@
+
+<html>
+<head>
+
+<link href='static/css/style.css' rel='stylesheet'>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
+<script src='static/js/script.js'></script>
+
+<title>LoginForm</title>
+</head>
+
+<body>
+<div id="formWrapper">
+
+<div id="form">
+<div class="logo">
+<h1 >Welcome!</h1>
+<h6>Please Sign in to continue</h6>
+</div>
+
+<form class='form-signin' method='POST' action='/login'>
+    {{ form.csrf_token }}
+        <div class="form-item">
+     <p class="formLabel">{{form.username.label}}</p> 
+           {{form.username(type='text',class='form-style',autocomplete='off')}}
+        </div>
+        <div class="form-item">
+           <p class="formLabel">{{form.password.label}}</p> 
+           {{form.password(class='form-style')}}
+            <p><a href="{{url_for('forget_password')}}" ><small>Forgot Password ?</small></a></p>  
+            {% if error %}
+             <p class=error style='color: red; text-align: center; font-style:inherit;'><small>Invalid username or password</small></p>
+            {% endif %}
+  
+        </div>
+
+        
+        <div class="form-item">
+        <p class="pull-left"><a href="{{url_for('register')}}"><small>Sign up</small></a></p>
+        <input type="submit" class="login pull-right" value="Sign In">
+        <div class="clear-fix"></div>
+        </div>
+</div>
+</div>
+
+</form>
+</body>
+</html>

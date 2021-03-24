@@ -1,0 +1,19 @@
+header {
+  padding: 156px 0 100px;
+  background: url('../images/header_image.jpg') no-repeat;
+  width: 100%;
+  background-size: cover;
+  
+}
+
+
+section {
+  padding: 150px 0;
+}
+
+.choose{
+  border: 1px solid white;
+  border-radius: 25px;
+  margin: 25%;
+  text-align:center;
+}

@@ -1,0 +1,50 @@
+<html>
+<head>
+
+<link href='static/css/style.css' rel='stylesheet'>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
+<script src='static/js/script.js'></script>
+
+<title> RegisterForm </title>
+</head>
+
+<body>
+<div id="formWrapper">
+
+<div id="form">
+<div class="logo">
+<h1>Welcome! </h1>
+<h6 >Sign Up here</h6>
+</div>
+
+<form class='form-signup' method='POST' action='/register'>
+    {{ form.csrf_token }}
+        <div class="form-item">
+     <p class="formLabel">{{form.username.label}}</p> 
+           {{form.username(type='text',class='form-style',autocomplete='off')}}
+        </div>
+
+         <div class="form-item">
+     <p class="formLabel">{{form.email.label}}</p> 
+           {{form.email(type='email',class='form-style',autocomplete='off')}}
+        </div>
+
+        <div class="form-item">
+           <p class="formLabel">{{form.password.label}}</p> 
+           {{form.password(class='form-style',autocomplete='off')}}
+        </div>
+        
+       <p class="pull-left"><small>Already have an account  </small><a href="{{url_for('login')}}"><small>Sign in</small></a></p>
+        <input type="submit" class="login pull-right" value="Sign Up">
+        <div class="clear-fix"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+</form>
+</body>
+</html>

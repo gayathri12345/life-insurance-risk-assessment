@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href='static/css/dashboard.css' rel='stylesheet'>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.0.min.js" ></script>
+
+<script>
+
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+}
+</script>
+<title>Dashboard</title>
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"  style='font-style: initial; '>Risk Assessment</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#predict">Get Started</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#tabs">Reports</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{{url_for('logout')}}">logout</a>
+          </li>
+
+
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <header class="bg-primary text-black">
+
+    <div class="container text-center">
+      <h5 style='font-style: italic;'>Welcome {{user}}!</h5>
+      <h1 style='font-style: italic;'>Life Insurance Risk Assessment</h1>
+    </div>
+  </header>
+   <br>
+
+      
+      
+       <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+
+        <h3 id='about'>About</h3>
+          <p class="lead">This Application is used to predict the risk of customers in life insurance sector based on various features.</p>  
+
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+<div class="choose">
+  <section id="predict">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Risk Prediction</h2>
+          <p>Upload file to predict the risk <i>(Only .csv format)</i></p>
+
+          <form method='post' action='http://localhost:5000/predict', enctype="multipart/form-data">   
+             {{form.csrf_token}}
+             {{form.file(class="btn btn-primary")}}
+             &emsp; &emsp; &emsp;
+              <button class="btn btn-primary" type='submit' id='upload'>Predict</button>
+            </form>
+
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </section>
+</div>
+
+
+
+ <section id="tabs">
+    <div class="container">
+
+ <div class="row">
+  
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Download Report</h5>
+        <p class="card-text">Download the reports here</p>
+        <a href='static/output/risk.csv' class="btn btn-primary" role='button' aria-pressed='true'>Download</a>
+      
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Risk Analysis</h5>
+        <p class="card-text">View the Analysis here</p>
+        <a href="{{url_for('charts')}}" class="btn btn-primary" role='button' aria-pressed='true'>Show reports</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>
